@@ -11,12 +11,13 @@ import 'jitsi_meet_platform_interface.dart';
 /// An implementation of [JitsiMeetPlatform] that uses method channels.
 class MethodChannelJitsiMeet extends JitsiMeetPlatform {
   /// The method channel used to interact with the native platform.
+  static const _jitmeetViewType = 'flutter.stripe/jitsi_meet_flutter_sdk';
+  static const _jitmeetEventType =
+      'flutter.stripe/jitsi_meet_flutter_sdk_events';
   @visibleForTesting
-  final methodChannel =
-      const MethodChannel('flutter.stripe/jitsi_meet_flutter_sdk');
+  final methodChannel = const MethodChannel(_jitmeetViewType);
   @visibleForTesting
-  final eventChannel =
-      const EventChannel('flutter.stripe/jitsi_meet_flutter_sdk_events');
+  final eventChannel = const EventChannel(_jitmeetEventType);
 
   bool _eventChannelIsInitialized = false;
   JitsiMeetEventListener? _listener;
