@@ -29,10 +29,10 @@ class JitsiMeetPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
   private var activity: Activity? = null
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    methodChannel = MethodChannel(flutterPluginBinding.binaryMessenger, "jitsi_meet_flutter_sdk")
+    methodChannel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter.stripe/jitsi_meet_flutter_sdk")
     methodChannel.setMethodCallHandler(this)
 
-    eventChannel = EventChannel(flutterPluginBinding.binaryMessenger, "jitsi_meet_flutter_sdk_events")
+    eventChannel = EventChannel(flutterPluginBinding.binaryMessenger, "flutter.stripe/jitsi_meet_flutter_sdk_events")
     eventChannel.setStreamHandler(eventStreamHandler)
   }
 
