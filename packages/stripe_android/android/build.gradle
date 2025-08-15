@@ -18,8 +18,12 @@ buildscript {
 
 rootProject.allprojects {
     repositories {
+        maven {
+            url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
+        }
         google()
         mavenCentral()
+        maven { url 'https://www.jitpack.io' }
     }
 }
 
@@ -41,10 +45,26 @@ android {
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
     }
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 24
         consumerProguardFiles 'proguard-rules.txt'
+    }
+    dependencies {
+        testImplementation 'org.jetbrains.kotlin:kotlin-test'
+        testImplementation 'org.mockito:mockito-core:5.0.0'
+    }
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+
+            testLogging {
+               events "passed", "skipped", "failed", "standardOut", "standardError"
+               outputs.upToDateWhen {false}
+               showStandardStreams = true
+            }
+        }
     }
 }
 
@@ -58,10 +78,14 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    // jitsi
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation ('org.jitsi.react:jitsi-meet-sdk:11.4.0') { transitive = true }
 
     // play-services-wallet is already included in stripe-android
     compileOnly "com.google.android.gms:play-services-wallet:19.3.0"
 
     // Users need to declare this dependency on their own, otherwise all methods are a no-op
     compileOnly 'com.stripe:stripe-android-issuing-push-provisioning:1.1.0'
+
 }
