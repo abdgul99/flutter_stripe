@@ -13,10 +13,10 @@ class MethodChannelJitsiMeet extends JitsiMeetPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
   final methodChannel =
-      const MethodChannel('flutter.stri/jitsi_meet_flutter_sdk');
+      const MethodChannel('flutter.stripe/jitsi_meet_flutter_sdk');
   @visibleForTesting
   final eventChannel =
-      const EventChannel('flutter.stri/jitsi_meet_flutter_sdk_events');
+      const EventChannel('flutter.stripe/jitsi_meet_flutter_sdk_events');
 
   bool _eventChannelIsInitialized = false;
   JitsiMeetEventListener? _listener;
