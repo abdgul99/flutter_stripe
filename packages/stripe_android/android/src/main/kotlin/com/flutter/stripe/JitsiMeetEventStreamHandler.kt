@@ -1,4 +1,4 @@
-package org.jitsi.jitsi_meet_flutter_sdk
+package com.flutter.stripe
 
 import io.flutter.plugin.common.EventChannel
 import java.io.Serializable

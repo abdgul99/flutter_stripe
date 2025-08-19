@@ -1,4 +1,4 @@
-package org.jitsi.jitsi_meet_flutter_sdk
+package com.flutter.stripe
 
 import android.app.Activity
 import androidx.annotation.NonNull
